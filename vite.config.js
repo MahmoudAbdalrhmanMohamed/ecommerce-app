@@ -18,6 +18,7 @@ export default defineConfig({
       },
       manifest: {
         name: 'Ecommerce App',
+        short_name: 'Ecommerce',
         theme_color: '#0f172a',
         icons: [
           {
@@ -67,7 +68,7 @@ export default defineConfig({
             sizes: '620x300',
             type: 'image/png',
             purpose: 'any'
-          },
+          }
         ]
       },
       workbox: {
