@@ -21,15 +21,57 @@ export default defineConfig({
         theme_color: '#0f172a',
         icons: [
           {
-            src: './logo.png',
-            sizes: '50x33',
+            src: './44x44.png',
+            sizes: '44x44',
             type: 'image/png',
             purpose: 'any'
-          }
+          },
+          {
+            src: './50x50.png',
+            sizes: '50x50',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: './71x71.png',
+            sizes: '71x71',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: './150x150.png',
+            sizes: '150x150',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: './310x310.png',
+            sizes: '310x310',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: './350x150.png',
+            sizes: '350x150',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: './512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: './620x300.png',
+            sizes: '620x300',
+            type: 'image/png',
+            purpose: 'any'
+          },
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,png,jpg}'],
+        globPatterns: ['**/*.{js,css,html,png,jpg,svg}'],
         sourcemap: true
       }
     })
