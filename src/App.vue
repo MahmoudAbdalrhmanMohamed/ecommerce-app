@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header class="grid grid-cols-12 items-center mb-12 pt-2 px-2">
     <div class="logo w-16 flex items-center col-span-3">
-      <img src="./logo.png" alt="logo img" />
+      <img src="./public/logo.png" alt="logo img" />
       <p class="capitalize text-lg font-bold">funniro</p>
     </div>
     <nav class="flex col-span-3">
