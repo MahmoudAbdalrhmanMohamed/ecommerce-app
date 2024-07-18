@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue'
+import { RouterLink } from 'vue-router'
 </script>
 <template>
   <header class="grid grid-cols-12 items-center mb-12 pt-2 px-2">
