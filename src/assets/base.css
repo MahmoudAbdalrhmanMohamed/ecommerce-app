@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+--main-hover-color:rgb(245,158,11);
+}
+
+.toggleclass{
+  @apply bg-white;
+}
+.router-link-active{
+  @apply text-main-hover-color;
+}
