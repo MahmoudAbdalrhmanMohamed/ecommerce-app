@@ -22,6 +22,16 @@ const router = createRouter({
       path: '/contact',
       name: 'contact',
       component: () => import('@/views/ContactView.vue')
+    },
+    {
+      path: '/regsiter',
+      name: 'regsiter',
+      component: () => import('@/views/ResigterView.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@/views/SearchView.vue')
     }
   ]
 })
