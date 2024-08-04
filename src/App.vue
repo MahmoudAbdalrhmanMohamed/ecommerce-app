@@ -5,5 +5,10 @@ import headerComponent from '@/components/HeaderComponent.vue'
 
 <template>
   <headerComponent></headerComponent>
-  <RouterView  />
+
+  <RouterView v-slot="{ Component }">
+    <transition name="fade" appear mode="out-in">
+      <component :is="Component"></component>
+    </transition>
+  </RouterView>
 </template>

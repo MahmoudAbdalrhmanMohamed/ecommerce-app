@@ -1,5 +1,10 @@
 <template>
-  <vee-form @submit.prevent="" class="flex flex-col justify-center items-center md:items-start m-12 gap-8" :validation-schema="schema">
+  <vee-form
+    @submit.prevent=""
+    class="flex flex-col justify-center items-center md:items-start m-12 gap-8"
+    :validation-schema="schema"
+  >
+  
     <div class="form-ele">
       <label for="email">Email</label>
       <vee-field
@@ -12,7 +17,6 @@
       <ErrorMessage name="email" class="text-red-600 capitalize" />
     </div>
 
-
     <div class="form-ele">
       <label for="password">Password</label>
       <vee-field
@@ -21,8 +25,8 @@
         placeholder="Enter Your Password"
         id="password"
         class="form-input md:ml-24 md:mr-4"
-        />
-        <ErrorMessage name="password" class="text-red-600 capitalize" />
+      />
+      <ErrorMessage name="password" class="text-red-600 capitalize" />
     </div>
 
     <div class="form-ele">
@@ -32,7 +36,7 @@
         name="confirm"
         placeholder="Enter Your Confirm Password"
         id="confirm"
-        class="form-input md:ml-7 md:mr-4"
+        class="form-input md:ml-9 md:mr-4"
       />
       <ErrorMessage name="confirm" class="text-red-600 capitalize" />
     </div>
@@ -52,7 +56,7 @@ import { reactive } from 'vue'
 const schema = reactive({
   email: 'required|min:3|max:40|email',
   password: 'required|min:8|max:16',
-  confirm:'confirmed:@password'
+  confirm: 'confirmed:@password'
 })
 </script>
 

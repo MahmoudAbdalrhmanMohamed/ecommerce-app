@@ -1,5 +1,6 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
+
 import { ref } from 'vue'
 import LogosComponent from './LogosComponent.vue'
 let show = ref(false)
@@ -7,14 +8,25 @@ let show = ref(false)
 const toggleMenu = () => {
   show.value = !show.value
 }
+
+const router = useRouter()
+const gotohome = () => {
+  router.push('/')
+}
 </script>
 
 <template>
   <header class="grid grid-cols-12 items-center mt-4 mb-12 ml-12 pr-8">
-    <div class="logo w-16 flex items-center col-span-11 md:col-span-3">
-      <img src="../../public/logo.png" alt="logo img" />
-      <p class="capitalize text-lg font-bold">funniro</p>
-    </div>
+    <transition appear name="fade">
+      <div
+        class="logo w-16 flex items-center col-span-11 md:col-span-3 cursor-pointer"
+        @click="gotohome"
+        :key="router.path"
+      >
+        <img src="../../public/logo.png" alt="logo img" />
+        <p class="capitalize text-lg font-bold">funniro</p>
+      </div>
+    </transition>
     <nav class="hidden md:col-span-4 lg:col-span-6 md:gap-8 lg:gap-12 justify-self-center md:flex">
       <RouterLink class="duration-300 hover:text-main-hover-color" aria-label="home router" to="/"
         >Home</RouterLink
@@ -93,20 +105,23 @@ const toggleMenu = () => {
               >Contact</RouterLink
             >
           </div>
-          <LogosComponent @close="toggleMenu" :show="show" classes="*:cursor-pointer flex items-center flex-col gap-16 *:w-8" mode="white" />
+          <LogosComponent
+            @close="toggleMenu"
+            :show="show"
+            classes="*:cursor-pointer flex items-center flex-col gap-16 *:w-8"
+            mode="white"
+          />
         </div>
       </transition>
     </teleport>
   </header>
 </template>
 
-<style scoped>
-.v-enter-from,
-.v-leave-to {
-  transform: translateX(100%);
+<style>
+.fade-enter-from {
+  transform: translateY(10px);
 }
-.v-enter-active,
-.v-leave-active {
-  transition: 0.5s;
+.fade-enter-active {
+  transition: 0.3s;
 }
 </style>
