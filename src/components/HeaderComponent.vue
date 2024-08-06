@@ -23,7 +23,7 @@ const gotohome = () => {
         @click="gotohome"
         :key="router.path"
       >
-        <img src="../../public/logo.png" alt="logo img" />
+        <img src="../../public/logo.webp" alt="logo img" />
         <p class="capitalize text-lg font-bold">funniro</p>
       </div>
     </transition>
