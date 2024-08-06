@@ -12,7 +12,7 @@
         name="email"
         id="email"
         placeholder="Enter Your Email"
-        class="form-input md:ml-32 md:mr-4"
+        class="form-input md:ml-36 md:mr-4"
       />
       <ErrorMessage name="email" class="text-red-600 capitalize" />
     </div>
@@ -24,7 +24,7 @@
         name="password"
         placeholder="Enter Your Password"
         id="password"
-        class="form-input md:ml-24 md:mr-4"
+        class="form-input md:ml-28 md:mr-4"
       />
       <ErrorMessage name="password" class="text-red-600 capitalize" />
     </div>
@@ -36,7 +36,7 @@
         name="confirm"
         placeholder="Enter Your Confirm Password"
         id="confirm"
-        class="form-input md:ml-9 md:mr-4"
+        class="form-input md:ml-11 md:mr-4"
       />
       <ErrorMessage name="confirm" class="text-red-600 capitalize" />
     </div>

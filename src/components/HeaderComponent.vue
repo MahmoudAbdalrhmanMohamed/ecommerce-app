@@ -27,7 +27,7 @@ const gotohome = () => {
         <p class="capitalize text-lg font-bold">funniro</p>
       </div>
     </transition>
-    <nav class="hidden md:col-span-4 lg:col-span-6 md:gap-8 lg:gap-12 justify-self-center md:flex">
+    <nav class="hidden md:col-span-4 lg:col-span-6 md:gap-6 lg:gap-12 justify-self-center md:flex">
       <RouterLink class="duration-300 hover:text-main-hover-color" aria-label="home router" to="/"
         >Home</RouterLink
       >
@@ -52,7 +52,7 @@ const gotohome = () => {
     </nav>
 
     <LogosComponent
-      classes="*:cursor-pointer hidden md:flex items-center md:col-span-5 lg:col-span-3 md:gap-8 lg:gap-12 justify-self-end *:w-8"
+      classes="*:cursor-pointer hidden md:flex items-center md:col-span-5 lg:col-span-3 md:gap-6 lg:gap-12 justify-self-end *:w-8"
       mode="dark"
     />
 
@@ -68,7 +68,7 @@ const gotohome = () => {
       <span :class="{ toggleclass: show, '-rotate-45': show }" class="bg-black top-full"></span>
     </div>
     <teleport to="#app">
-      <transition appear>
+      <transition appear name="fade">
         <div
           v-if="show"
           class="flex justify-center items-center w-screen h-screen absolute gap-24 top-0 bg-black text-white"
@@ -119,9 +119,38 @@ const gotohome = () => {
 
 <style>
 .fade-enter-from {
-  transform: translateY(10px);
+  transform: translateY(-100%);
+  opacity: 0;
 }
-.fade-enter-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: 0.3s;
 }
+.fade-leave-from,
+.fade-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+.fade-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+
+.menu-enter-from {
+  transform: translateX(100%);
+}
+.menu-enter-active,
+.menu-leave-active {
+  transition: 0.3s;
+}
+.menu-leave-from,
+.menu-enter-to {
+  transform: translateY(0);
+}
+.menu-leave-to {
+  transform: translateX(-100%);
+}
+
+
 </style>
