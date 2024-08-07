@@ -68,7 +68,7 @@ const gotohome = () => {
       <span :class="{ toggleclass: show, '-rotate-45': show }" class="bg-black top-full"></span>
     </div>
     <teleport to="#app">
-      <transition appear name="fade">
+      <transition appear name="menu">
         <div
           v-if="show"
           class="flex justify-center items-center w-screen h-screen absolute gap-24 top-0 bg-black text-white"
@@ -142,14 +142,14 @@ const gotohome = () => {
 }
 .menu-enter-active,
 .menu-leave-active {
-  transition: 0.3s;
+  transition: 0.5s;
 }
 .menu-leave-from,
 .menu-enter-to {
-  transform: translateY(0);
+  transform: translateX(0);
 }
 .menu-leave-to {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 
 
