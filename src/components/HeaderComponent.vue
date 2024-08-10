@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
 import { ref } from 'vue'
 import LogosComponent from './LogosComponent.vue'
@@ -8,15 +9,24 @@ let show = ref(false)
 const toggleMenu = () => {
   show.value = !show.value
 }
+const logoutToggleMenu = () => {
+  toggleMenu()
+  logout()
+}
 
 const router = useRouter()
 const gotohome = () => {
   router.push('/')
 }
+
+const store = useAuthStore()
+const logout = () => {
+  store.logout()
+}
 </script>
 
 <template>
-  <header class="grid grid-cols-12 items-center mt-4 mb-12 ml-12 pr-8">
+  <header class="grid grid-cols-12 items-center justify-center mt-4 mb-12 ml-12 pr-8">
     <transition appear name="fade">
       <div
         class="logo w-16 flex items-center col-span-11 md:col-span-3 cursor-pointer"
@@ -27,7 +37,9 @@ const gotohome = () => {
         <p class="capitalize text-lg font-bold">funniro</p>
       </div>
     </transition>
-    <nav class="hidden md:col-span-4 lg:col-span-6 md:gap-6 lg:gap-12 justify-self-center md:flex">
+    <nav
+      class="hidden md:col-span-4 lg:col-span-6 md:gap-4 lg:gap-12 justify-self-center md:flex md:items-center"
+    >
       <RouterLink class="duration-300 hover:text-main-hover-color" aria-label="home router" to="/"
         >Home</RouterLink
       >
@@ -49,10 +61,18 @@ const gotohome = () => {
         class="duration-300 hover:text-main-hover-color"
         >Contact</RouterLink
       >
+      <button
+        v-if="store.user.uid"
+        class="active:bg-yellow-600 bg-yellow-400 text-white capitalize rounded-xl shadow-lg transition duration-300 hover:shadow-sm px-2 py-2"
+        @click="logout"
+        aria-label="logout"
+      >
+        logout
+      </button>
     </nav>
 
     <LogosComponent
-      classes="*:cursor-pointer hidden md:flex items-center md:col-span-5 lg:col-span-3 md:gap-6 lg:gap-12 justify-self-end *:w-8"
+      classes="*:cursor-pointer hidden md:flex items-center md:col-span-5 lg:col-span-3 md:gap-4 lg:gap-8 justify-self-end *:w-8"
       mode="dark"
     />
 
@@ -104,6 +124,14 @@ const gotohome = () => {
               to="/contact"
               >Contact</RouterLink
             >
+            <button
+              v-if="store.user.uid"
+              class="active:bg-yellow-600 bg-yellow-400 text-white capitalize rounded-xl shadow-lg transition duration-300 hover:shadow-sm px-2 py-2"
+              @click="logoutToggleMenu"
+              aria-label="logout"
+            >
+              logout
+            </button>
           </div>
           <LogosComponent
             @close="toggleMenu"
@@ -136,7 +164,6 @@ const gotohome = () => {
   opacity: 0;
 }
 
-
 .menu-enter-from {
   transform: translateX(100%);
 }
@@ -151,6 +178,4 @@ const gotohome = () => {
 .menu-leave-to {
   transform: translateX(100%);
 }
-
-
 </style>

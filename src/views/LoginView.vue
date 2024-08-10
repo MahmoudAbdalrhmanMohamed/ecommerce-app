@@ -2,7 +2,7 @@
   <vee-form
     class="flex flex-col justify-center items-center md:items-start m-12 gap-8"
     :validation-schema="schema"
-    @submit="formData"
+    @submit="login"
   >
     <div class="form-ele">
       <label for="email">Email</label>
@@ -30,33 +30,21 @@
       <ErrorMessage name="password" class="text-red-600 capitalize" />
     </div>
 
-    <div class="form-ele">
-      <label for="confirm">Confirm Password</label>
-      <vee-field
-        type="password"
-        name="confirm"
-        placeholder="Enter Your Confirm Password"
-        id="confirm"
-        class="form-input md:ml-11 md:mr-4"
-      />
-      <ErrorMessage name="confirm" class="text-red-600 capitalize" />
-    </div>
-
-    <div class="flex-col flex gap-8 md:flex-row md:gap-72">
+    <div>
       <vee-field
         type="submit"
         class="hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
         value="Submit"
         name="submit"
       />
-   
+    </div>
+    <div>
       <RouterLink
-        :to="{ name: 'login' }"
+        :to="{ name: 'regsiter' }"
         class="hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
         name="submit"
+        >Signup Instead</RouterLink
       >
-        Login Instead
-      </RouterLink>
     </div>
   </vee-form>
 </template>
@@ -67,8 +55,7 @@ import { useRouter, RouterLink } from 'vue-router'
 
 const schema = reactive({
   email: 'required|min:3|max:40|email',
-  password: 'required|min:8|max:16',
-  confirm: 'confirmed:@password'
+  password: 'required|min:8|max:16'
 })
 
 let formInputs = reactive({
@@ -78,8 +65,7 @@ let formInputs = reactive({
 
 const router = useRouter()
 const store = useAuthStore()
-function formData() {
-  console.log(formInputs.email, formInputs.password)
-  if (store.registerUser(formInputs)) router.push({ name: 'home' })
+const login = () => {
+  if (store.login(formInputs)) router.push({ name: 'home' })
 }
 </script>

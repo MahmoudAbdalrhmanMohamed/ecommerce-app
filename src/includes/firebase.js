@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, CACHE_SIZE_UNLIMITED } from 'firebase/firestore'
-
+import { getFirestore } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
 const firebaseConfig = {
   apiKey: 'AIzaSyCGN5iWHJqlt7a_GpAF91Kf6TbHTRCkSWM',
   authDomain: 'ecommerce-app-52e13.firebaseapp.com',
@@ -10,9 +10,8 @@ const firebaseConfig = {
   appId: '1:168219335589:web:43cdc80fb5185c6ddea64c'
 }
 
-const app = initializeApp(firebaseConfig, {
-  cacheSizeBytes: CACHE_SIZE_UNLIMITED
-})
+const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
+const auth = getAuth(app)
 
-export { db }
+export { db, auth }

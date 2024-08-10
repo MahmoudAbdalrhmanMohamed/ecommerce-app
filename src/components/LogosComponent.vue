@@ -5,14 +5,14 @@
       class="hover:rotate-45 transition duration-300"
       src="../assets/images/main_page/header/login.svg"
       alt="login img"
-      @click="push('/regsiter')"
+      @click="push({name:'login'})"
     />
     <img
       loading="lazy"
       class="hover:rotate-45 transition duration-300"
       src="../assets/images/main_page/header/search.svg"
       alt="search img"
-      @click="push('/search')"
+      @click="push({name:'search'})"
     />
     <img
       loading="lazy"
@@ -26,6 +26,7 @@
       src="../assets/images/main_page/header/cart.svg"
       alt="cart img"
     />
+   
   </div>
   <div :class="props.classes" v-else>
     <img
@@ -33,14 +34,14 @@
       class="hover:rotate-45 transition duration-300"
       src="../assets/images/main_page/header/login-white.svg"
       alt="login img"
-      @click="push('/regsiter')"
+      @click="push({name:'login'})"
     />
     <img
       loading="lazy"
       class="hover:rotate-45 transition duration-300"
       src="../assets/images/main_page/header/search-white.svg"
       alt="search img"
-      @click="push('/search')"
+      @click="push({name:'search'})"
     />
     <img
       loading="lazy"
@@ -54,6 +55,7 @@
       src="../assets/images/main_page/header/cart-white.svg"
       alt="cart img"
     />
+   
   </div>
 </template>
 
