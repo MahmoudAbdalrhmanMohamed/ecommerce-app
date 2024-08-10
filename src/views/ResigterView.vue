@@ -59,11 +59,11 @@
       </button>
     </div>
   </vee-form>
-  <LoginComponent v-if="props.switcher === 'login'" @ToggleSwitcher="to.switcher === 'signUp'"/>
+  <LoginComponent v-else @ToggleSwitcher="to.switcher === 'signUp'"/>
 </template>
 
 <script setup>
-import LoginComponent from '@/components/loginComponent'
+import LoginComponent from '../components/LoginComponent'
 import { reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
