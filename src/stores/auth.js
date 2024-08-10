@@ -11,7 +11,7 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: {}
   }),
-
+  
   actions: {
     init() {
       onAuthStateChanged(auth, (user) => {
@@ -22,8 +22,8 @@ export const useAuthStore = defineStore('auth', {
         }
       })
     },
-    async login(formData) {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password)
+    login(formData) {
+      signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
           const user = userCredential.user
           this.user.uid = user.uid
@@ -34,8 +34,8 @@ export const useAuthStore = defineStore('auth', {
           return false
         })
     },
-    async registerUser(formData) {
-      await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+    registerUser(formData) {
+      createUserWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
           const user = userCredential.user
           this.user.uid = user.uid
@@ -46,13 +46,13 @@ export const useAuthStore = defineStore('auth', {
           return false
         })
     },
-    async logout() {
-      await signOut(auth)
+    logout() {
+      signOut(auth)
         .then(() => {
           return true
         })
-        .catch((error) => {
-          this.user.message = error.message
+        .catch(() => {
+          this.user = {};
           return false
         })
     }

@@ -18,4 +18,7 @@ const store = useAuthStore()
 onMounted(() => {
   store.init()
 })
+
+
+
 </script>

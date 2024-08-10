@@ -5,7 +5,7 @@
       class="hover:rotate-45 transition duration-300"
       src="../assets/images/main_page/header/login.svg"
       alt="login img"
-      @click="push({name:'login'})"
+      @click="push({name:'regsiter'})"
     />
     <img
       loading="lazy"
@@ -34,7 +34,7 @@
       class="hover:rotate-45 transition duration-300"
       src="../assets/images/main_page/header/login-white.svg"
       alt="login img"
-      @click="push({name:'login'})"
+      @click="push({name:'regsiter'})"
     />
     <img
       loading="lazy"

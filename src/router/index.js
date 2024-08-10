@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import { useAuthStore } from '@/stores/auth'
+// import { useAuthStore } from '@/stores/auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,19 +26,14 @@ const router = createRouter({
       component: () => import('@/views/ContactView.vue')
     },
     {
-      path: '/regsiter',
-      name: 'regsiter',
-      component: () => import('@/views/ResigterView.vue')
-    },
-    {
       path: '/search',
       name: 'search',
       component: () => import('@/views/SearchView.vue')
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/LoginView.vue')
+      path: '/regsiter',
+      name: 'regsiter',
+      component: () => import('@/views/ResigterView.vue')
     },
     {
       path: '/:catchAll(.*)*',
@@ -47,14 +42,21 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach(async (to) => {
-  const store = useAuthStore()
-  if (store.user.uid && to.name === 'regsiter') {
-    return { name: 'home' }
-  }
-  if (store.user.uid && to.name === 'login') {
-    return { name: 'home' }
-  }
-})
+// router.beforeEach((to) => {
+//   const store = useAuthStore()
+//   if (!store.user.uid && to.name !== 'login') {
+//     return { name: 'login' }
+//   }
+ 
+// })
+
+// router.beforeResolve(async (to, _, next) => {
+//   const store = useAuthStore()
+//   if (!store.user.uid && (to.name !== 'login' || to.name !== 'regsiter')) {
+//     next({ name: to.name })
+//   } else if (!store.user.uid && (to.name == 'login' || to.name == 'regsiter')) {
+//     next({ name: 'home' })
+//   }
+// })
 
 export default router

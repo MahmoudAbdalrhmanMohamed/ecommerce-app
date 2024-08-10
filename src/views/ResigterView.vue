@@ -1,5 +1,5 @@
 <template>
-  <vee-form
+  <vee-form v-if="to.switcher === 'signUp'"
     class="flex flex-col justify-center items-center md:items-start m-12 gap-8"
     :validation-schema="schema"
     @submit="formData"
@@ -45,25 +45,28 @@
     <div class="flex-col flex gap-8 md:flex-row md:gap-72">
       <vee-field
         type="submit"
-        class="active:bg-yellow-700 hover:bg-yellow-700 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-yellow-400"
+        class="active:bg-yellow-700 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-yellow-400"
         value="Submit"
         name="submit"
       />
    
-      <RouterLink
-        :to="{ name: 'login' }"
+      <button
+        @click="to.switcher = 'login'"
         class="hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
         name="submit"
       >
         Login Instead
-      </RouterLink>
+      </button>
     </div>
   </vee-form>
+  <LoginComponent v-if="props.switcher === 'login'" @ToggleSwitcher="to.switcher === 'signUp'"/>
 </template>
+
 <script setup>
+import LoginComponent from '@/components/loginComponent'
 import { reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import { useRouter, RouterLink } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const schema = reactive({
   email: 'required|min:3|max:40|email',
@@ -79,7 +82,10 @@ let formInputs = reactive({
 const router = useRouter()
 const store = useAuthStore()
 function formData() {
-  console.log(formInputs.email, formInputs.password)
   if (store.registerUser(formInputs)) router.push({ name: 'home' })
 }
+
+let to = reactive({
+  switcher:'login'
+  })
 </script>

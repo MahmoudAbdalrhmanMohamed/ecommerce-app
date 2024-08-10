@@ -1,5 +1,6 @@
 <template>
   <vee-form
+  
     class="flex flex-col justify-center items-center md:items-start m-12 gap-8"
     :validation-schema="schema"
     @submit="login"
@@ -30,26 +31,27 @@
       <ErrorMessage name="password" class="text-red-600 capitalize" />
     </div>
 
-    <div class="flex-col flex gap-8 md:flex-row md:gap-72">
+    <div class="flex-col flex gap-8 md:flex-row md:gap-64">
       <vee-field
         type="submit"
-        class="active:bg-yellow-700 hover:bg-yellow-700 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-yellow-400"
+        class="active:bg-yellow-700 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-yellow-400"
         value="Submit"
         name="submit"
       />
-      <RouterLink
-        :to="{ name: 'regsiter' }"
-        class="hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
+      <button
+        @click="emits('ToggleSwitcher')"
+        class="ml-4 hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
         name="submit"
-        >Signup Instead</RouterLink
-      >
+        >Signup Instead</button>
     </div>
   </vee-form>
 </template>
 <script setup>
 import { reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import { useRouter, RouterLink } from 'vue-router'
+import { useRouter,  } from 'vue-router'
+
+const emits = defineEmits(['ToggleSwitcher'])
 
 const schema = reactive({
   email: 'required|min:3|max:40|email',
