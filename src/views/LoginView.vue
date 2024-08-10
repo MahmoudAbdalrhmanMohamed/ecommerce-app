@@ -30,15 +30,13 @@
       <ErrorMessage name="password" class="text-red-600 capitalize" />
     </div>
 
-    <div>
+    <div class="flex-col flex gap-8 md:flex-row md:gap-72">
       <vee-field
         type="submit"
-        class="hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
+        class="active:bg-yellow-700 hover:bg-yellow-700 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-yellow-400"
         value="Submit"
         name="submit"
       />
-    </div>
-    <div>
       <RouterLink
         :to="{ name: 'regsiter' }"
         class="hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
