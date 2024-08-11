@@ -37,12 +37,12 @@ const router = createRouter({
     },
     {
       path: '/:catchAll(.*)*',
-      redirect: { name: 'home' }
+      component: () => import('@/components/NotFound.vue')
     }
   ]
 })
 
-router.beforeEach(async(to) => {
+router.beforeEach(async (to) => {
   const store = useAuthStore()
   if (store.user.uid && to.name === 'regsiter') {
     return { name: 'home' }
@@ -51,6 +51,5 @@ router.beforeEach(async(to) => {
     return { name: 'regsiter' }
   }
 })
-
 
 export default router

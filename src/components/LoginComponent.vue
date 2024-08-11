@@ -39,7 +39,7 @@
       />
       <button
         @click="emits('ToggleSwitcher')"
-        class="ml-4 hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
+        class="px-4 md:ml-4 hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white py-3 bg-slate-500"
         name="submit"
       >
         Signup Instead
