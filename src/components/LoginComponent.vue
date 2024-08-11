@@ -50,7 +50,7 @@
 <script setup>
 import { reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import { useRouter } from 'vue-router'
+
 
 const emits = defineEmits(['ToggleSwitcher'])
 
@@ -64,9 +64,8 @@ let formInputs = reactive({
   password: ''
 })
 
-const router = useRouter()
 const store = useAuthStore()
 const login = () => {
-  if (store.login(formInputs)) router.push({ name: 'home' })
+  store.login(formInputs)
 }
 </script>

@@ -27,7 +27,7 @@ export const useAuthStore = defineStore('auth', {
         .then((userCredential) => {
           const user = userCredential.user
           this.user.uid = user.uid
-          return true
+          this.router.push({name:'home'})
         })
         .catch((error) => {
           this.user.message = error.message
@@ -49,7 +49,7 @@ export const useAuthStore = defineStore('auth', {
     logout() {
       signOut(auth)
         .then(() => {
-          return true
+          this.router.push({ name: 'home' })
         })
         .catch(() => {
           this.user = {};

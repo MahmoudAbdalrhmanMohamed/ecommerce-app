@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-// import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,21 +42,15 @@ const router = createRouter({
   ]
 })
 
-// router.beforeEach((to) => {
-//   const store = useAuthStore()
-//   if (!store.user.uid && to.name !== 'login') {
-//     return { name: 'login' }
-//   }
- 
-// })
+router.beforeEach(async(to) => {
+  const store = useAuthStore()
+  if (store.user.uid && to.name === 'regsiter') {
+    return { name: 'home' }
+  }
+  if (!store.user.uid && to.name !== 'regsiter') {
+    return { name: 'regsiter' }
+  }
+})
 
-// router.beforeResolve(async (to, _, next) => {
-//   const store = useAuthStore()
-//   if (!store.user.uid && (to.name !== 'login' || to.name !== 'regsiter')) {
-//     next({ name: to.name })
-//   } else if (!store.user.uid && (to.name == 'login' || to.name == 'regsiter')) {
-//     next({ name: 'home' })
-//   }
-// })
 
 export default router

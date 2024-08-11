@@ -1,5 +1,6 @@
 <template>
-  <vee-form v-if="to.switcher === 'signUp'"
+  <vee-form
+    v-if="to.switcher === 'signUp'"
     class="flex flex-col justify-center items-center md:items-start m-12 gap-8"
     :validation-schema="schema"
     @submit="formData"
@@ -49,7 +50,7 @@
         value="Submit"
         name="submit"
       />
-   
+
       <button
         @click="to.switcher = 'login'"
         class="hover:bg-slate-600 transition duration-700 rounded-xl shadow-search hover:shadow-sm cursor-pointer text-white px-4 py-3 bg-slate-500"
@@ -59,14 +60,12 @@
       </button>
     </div>
   </vee-form>
-  <LoginComponent v-else @ToggleSwitcher="to.switcher === 'signUp'"/>
+  <LoginComponent v-else @ToggleSwitcher="to.switcher = 'signUp'" />
 </template>
 
 <script setup>
-import LoginComponent from '../components/LoginComponent'
 import { reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import { useRouter } from 'vue-router'
 
 const schema = reactive({
   email: 'required|min:3|max:40|email',
@@ -79,13 +78,12 @@ let formInputs = reactive({
   password: ''
 })
 
-const router = useRouter()
 const store = useAuthStore()
 function formData() {
-  if (store.registerUser(formInputs)) router.push({ name: 'home' })
+  store.registerUser(formInputs)
 }
 
 let to = reactive({
-  switcher:'login'
-  })
+  switcher: 'login'
+})
 </script>
