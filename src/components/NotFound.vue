@@ -1,10 +1,13 @@
-<template class="flex items-center justify-center text-clip to-[#42d392]">
-  <div class="text-9xl">Page Not Found</div>
+<template>
+  <div class="flex items-center justify-center w-screen h-80 text-center">
+    <p class="font-semibold">Page Not Found</p>
+    </div>
 </template>
 <style scoped>
-div {
+p {
   background: linear-gradient(315deg, #42d392 25%, #647eff);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: clamp(2.5rem, 10vw, 8rem);
 }
 </style>

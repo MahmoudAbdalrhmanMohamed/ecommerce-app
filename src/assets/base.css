@@ -18,3 +18,33 @@
 .form-input{
   @apply w-60 md:w-80 px-3 py-2 outline-none bg-white rounded-xl shadow-me transition duration-1000 focus:shadow-md;
 }
+
+/* google chorem */
+  @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    border-radius: 1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 1rem;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 1rem;
+    transition: 1s;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6e6e6e;
+  }
+}
+
+/* firfox */
+@-moz-document url-prefix(){
+  html{
+    scrollbar-width:thin;
+    scrollbar-color:#BDBDBD transparent;
+  }
+}
